@@ -2,12 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Jewelry;
+use App\Livewire\Home;
 use App\Http\Controllers\HomeController;
 
 
 Route::get('/home',[HomeController::class, 'index']);
 
 Route::get('/jewelry', Jewelry::class);
+Route::get('/StartPage', Home::class);
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
