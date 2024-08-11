@@ -4,10 +4,10 @@ namespace App\Livewire;
 
 use Livewire\Component;
 
-class Jewelry extends Component
+class JewelryList extends Component
 {
     public function render()
     {
-        return view('livewire.jewelry');
+        return view('livewire.jewelry-list');
     }
 }

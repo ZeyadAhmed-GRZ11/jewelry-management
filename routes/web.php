@@ -1,15 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Livewire\Jewelry;
-use App\Livewire\Home;
 use App\Http\Controllers\HomeController;
+use App\Livewire\Home;
+use App\Livewire\JewelryList;
+use App\Livewire\AddJewelry;
 
 
-Route::get('/home',[HomeController::class, 'index']);
 
-Route::get('/jewelry', Jewelry::class);
+
 Route::get('/StartPage', Home::class);
+Route::get('/jewelryList', JewelryList::class);
+Route::get('/add/jewelry', AddJewelry::class);
 
 
 
@@ -28,6 +30,7 @@ Route::middleware([
     })->name('dashboard');
 });
 
+Route::get('/home',[HomeController::class, 'index']);
 
 
 
