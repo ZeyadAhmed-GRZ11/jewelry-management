@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('store', function (Blueprint $table) {
             $table->id();
+            $table->string('');
             $table->string('jewelry_name');
             $table->string('material_type');
             $table->text('description');

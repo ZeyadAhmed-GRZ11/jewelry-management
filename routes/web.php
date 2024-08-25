@@ -10,18 +10,22 @@ use App\Livewire\Cart;
 use App\Livewire\Aboutus;
 use App\Livewire\JewelryList;
 use App\Livewire\AddJewelry;
+use App\Livewire\Updatejewlery;
 
 
 
 
 Route::get('/test', Home::class);
+
 Route::get('/StartPage ',  StartPage::class);
 Route::get('/Gallery ',  Gallery::class);
 Route::get('/Category ',  Category::class);
 Route::get('/cart ',  Cart::class);
 Route::get('/AboutUs ',  Aboutus::class);
-Route::get('/jewelryList', JewelryList::class);
+
+Route::get('/jewelryList/admin', JewelryList::class);
 Route::get('/add/jewelry', AddJewelry::class);
+Route::get('/edit/jewelry/{id}', Updatejewlery::class);
 
 
 
