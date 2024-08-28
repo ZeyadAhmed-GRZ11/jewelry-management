@@ -13,6 +13,7 @@ class Store extends Model
         'description',
         'material_type',
         'price',
+        'image',
     ];
 
     protected $table = 'store';

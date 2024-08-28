@@ -26,66 +26,47 @@
 			<div class="products-wrap">
 				<aside id="sidebar">
 
-				     <h1>search bar here......</h1>
+               <div class="row md-3 p-2">
+				 <label for="">Budget Range:</label>
+			     <input type="number" wire:model="price" type="search" placeholder="price">
+</br>
+</br>
+                 <label for="">Material Type:</label>
+                 <select name="material_type" wire:model="material_type" id="material_type" class="form_select">
+                    <option value="">No Selected</option>
+                    <option value="Gold">Gold</option>
+                    <option value="White Gold">White Gold</option>
+                    <option value="Silver">Silver</option>
+                    <option value="Diamond">Diamond</option>
+                 </select>
+</br>
+</br>
+				
+			   </div>
 
 				</aside>
+
+				<div class="row md-3 p-2">
+                   <form class="d-flex" wire:submit.prevent="search">
+                     <form class="d-flex" role="search">
+                      <input wire:model="jewelry_name" class="form-control me-2" type="search" placeholder="Search ..." aria-label="Search">
+                      <button class="btn btn-outline-success" type="submit" style="margin: around 30px;">Search</button>
+                     </form>
+                    </form>
+                </div>
 				<div id="content">
 					<section class="products">
-						<article>
-							<a href="product.html"><img src="images/11.jpg" alt=""></a>
-							<h3><a href="product.html">Lorem ipsum dolor</a></h3>
-							<h4><a href="product.html">$990.00</a></h4>
-							<a href="cart.html" class="btn-add">Add to cart</a>
-						</article>
-						<article>
-							<a href="product.html"><img src="images/12.jpg" alt=""></a>
-							<h3><a href="product.html">cupidatat non proident</a></h3>
-							<h4><a href="product.html">$1 200.00</a></h4>
-							<a href="cart.html" class="btn-add">Add to cart</a>
-						</article>
-						<article>
-							<a href="product.html"><img src="images/13.jpg" alt=""></a>
-							<h3><a href="product.html">Duis aute irure</a></h3>
-							<h4><a href="product.html">$2 650.00</a></h4>
-							<a href="cart.html" class="btn-add">Add to cart</a>
-						</article>
-						<article>
-							<a href="product.html"><img src="images/14.jpg" alt=""></a>
-							<h3><a href="product.html">magna aliqua</a></h3>
-							<h4><a href="product.html">$3 500.00</a></h4>
-							<a href="cart.html" class="btn-add">Add to cart</a>
-						</article>
-						<article>
-							<a href="product.html"><img src="images/15.jpg" alt=""></a>
-							<h3><a href="product.html">Lorem ipsum dolor</a></h3>
-							<h4><a href="product.html">$1 500.00</a></h4>
-							<a href="cart.html" class="btn-add">Add to cart</a>
-						</article>
-						<article>
-							<a href="product.html"><img src="images/1.jpg" alt=""></a>
-							<h3><a href="product.html">cupidatat non proident</a></h3>
-							<h4><a href="product.html">$3 200.00</a></h4>
-							<a href="cart.html" class="btn-add">Add to cart</a>
-						</article>
-						<article>
-							<a href="product.html"><img src="images/16.jpg" alt=""></a>
-							<h3><a href="product.html">Duis aute irure</a></h3>
-							<h4><a href="product.html">$2 650.00</a></h4>
-							<a href="cart.html" class="btn-add">Add to cart</a>
-						</article>
-						<article>
-							<a href="product.html"><img src="images/17.jpg" alt=""></a>
-							<h3><a href="product.html">magna aliqua</a></h3>
-							<h4><a href="product.html">$3 500.00</a></h4>
-							<a href="cart.html" class="btn-add">Add to cart</a>
-						</article>
 
-						@foreach ($all_jewelries as $item )
+						@foreach ($jewelry  as $item )
 						 <article>
-							<a href=""><img src="images/17.jpg" alt=""></a>
-							<h3><a href="">{{$item->jewelry_name}}</a></h3>
-							<h4><a href="">{{$item->price}}</a></h4>
-							<a href="" class="btn-add">Add to cart</a>
+							<a href=""> @if ($item->image != "")
+                                         <img width="50" src="{{ asset('uploads/products/'.$item->image) }}" alt="">
+                                    @endif</a>
+							<h4><a href="">{{$item->name}}</a></h4>
+							<h4><a href="">{{$item->material_type}}</a></h4>
+							<h2><a href="">{{$item->price}}</a></h2>
+							<button  wire:click="addToCart">Add to cart</button>
+							
 						 </article>
 						@endforeach
 						

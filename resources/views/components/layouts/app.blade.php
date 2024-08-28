@@ -21,7 +21,7 @@
 			<a href="{{ url('/StartPage') }}" title="Shiny jewelry">Shiny jewelry</a>
 			<div class="right-links">
 				<ul>
-					<li><a href="{{ url('/cart') }}"><span class="ico-products"></span>3 products, $4 500.00</a></li>
+					<li><a href="{{ url('/cart') }}"><span class="ico-products"></span>My cart</a></li>
 					<li><a href=""><span class="ico-account">@if (Route::has('login'))
                                 @auth
                                     <a
@@ -76,7 +76,7 @@
 				<li><a href="{{ url('/StartPage') }}">Home</a></li>
 				<!-- <li><a href="{{ url('/Gallery') }}">Gallery</a></li> -->
 				<li><a href="{{ url('/Category') }}">Categories</a></li>
-				<li><a href="{{ url('/') }}">New collection</a></li>
+				<!-- <li><a href="{{ url('/') }}">New collection</a></li> -->
 				<li><a href="{{ url('/AboutUs') }}">About Us</a></li>
 			</ul>
 		</div>

@@ -13,14 +13,13 @@
 
             <div class="row md-3 p-2">
 
-             <!-- <form class="d-flex" wire:submit.prevent="search">
+               <form class="d-flex" wire:submit.prevent="search">
                 <form class="d-flex" role="search">
-                  <input wire:model="" wire:model="" class="form-control me-2" type="search" placeholder="Search ..." aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit" style="margin: around 30px;">Search</button>
+                 <input wire:model="jewelry_name" class="form-control me-2" type="search" placeholder="Search ..." aria-label="Search">
+                 <button class="btn btn-outline-success" type="submit" style="margin: around 30px;">Search</button>
                 </form>
-             </form> -->
-             
-         
+               </form>
+
             </div>
 
 
@@ -31,6 +30,7 @@
            <thead>
               <tr>
                 <th scope="col">id</th>
+                <th scope="col">Image</th>
                 <th scope="col">Name</th>
                 <th scope="col">Material Caliber</th>
                 <th scope="col">Description</th>
@@ -40,9 +40,14 @@
               </tr>
            </thead>
            <tbody>
-            @foreach ($all_jewelries as $item )
+            @foreach ($jewelry as $item )
               <tr>
                 <td scope="row">{{$loop->iteration}}</td>
+                <td>
+                    @if ($item->image != "")
+                        <img width="50" src="{{ asset('uploads/products/'.$item->image) }}" alt="">
+                    @endif
+                </td>
                 <td>{{$item->jewelry_name}}</td>
                 <td>{{$item->material_caliber}}</td>
                 <td>{{$item->description}}</td>
@@ -63,12 +68,14 @@
            </tbody>
         </table>
 
+
         <!-- <div x-data="{ count: 0 }">
           <h2 x-text="count"></h2>
           <button x-on:click="count++">+</button>
         </div> -->
-      
-        {{--  {{ $cars->links() }} --}} 
+
+         {{ $jewelry->links() }} 
+       
 
         <!-- <div>
           <h1 class="font-light">Done</h1>
@@ -88,4 +95,6 @@
         
         </div>
     </div>
+</br>
+</br>
 </div>

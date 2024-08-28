@@ -50,12 +50,20 @@
        <select name="material_type" wire:model="material_type" id="material_type" class="form_select">
           <option value="">Select Material Type</option>
           <option value="Gold">Gold</option>
+          <option value="White Gold">White Gold</option>
           <option value="Silver">Silver</option>
           <option value="Diamond">Diamond</option>
        </select>
        @error('material_type')
           <span class="text-danger">{{$message}}</span>
        @enderror
+    </div>
+    <div class="mb-3">
+            <label for="image" class="form-label">Jewelry Image:</label>
+            <input class="form-control" type="file" id="image" name="image" wire:model="image">
+            @error('image')
+                <span class="text-danger">{{$message}}</span>
+            @enderror
     </div>
     <div class="mb-3">
         <label for="price" class="form-label">price:</label>
