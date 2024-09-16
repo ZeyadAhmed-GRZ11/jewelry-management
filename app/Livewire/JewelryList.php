@@ -62,7 +62,7 @@ class JewelryList extends Component
         }
        
 
-        $jewelry = $query->paginate(10);
+        $jewelry = $query->paginate(20);
 
         return view('livewire.jewelry-list',[
             'jewelry' => $jewelry,

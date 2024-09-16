@@ -11,11 +11,13 @@ use App\Livewire\Aboutus;
 use App\Livewire\JewelryList;
 use App\Livewire\AddJewelry;
 use App\Livewire\Updatejewlery;
+use App\Livewire\Test;
 
 
 
 
 Route::get('/test', Home::class);
+Route::get('/newtest', Test::class);
 
 Route::get('/StartPage ',  StartPage::class);
 Route::get('/Gallery ',  Gallery::class);

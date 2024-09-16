@@ -22,7 +22,7 @@
         <div class="card-body">
 
 
- <form action="" wire:submit="saveJewelry">
+ <form @submit.prevent="saveJewelry" action="" wire:submit="saveJewelry">
 
      <div class="mb-3">
          <label for="name" class="form-label">Jewelry Name:</label>
@@ -59,8 +59,8 @@
        @enderror
     </div>
     <div class="mb-3">
-            <label for="image" class="form-label">Jewelry Image:</label>
-            <input class="form-control" type="file" id="image" name="image" wire:model="image">
+            <label for="image" class="block text-gray-700 font-bold mb-2">Image:</label>
+            <input type="file" wire:model="image" id="title" class="w-full border border-gray-300 px-4 py-2 rounded">
             @error('image')
                 <span class="text-danger">{{$message}}</span>
             @enderror

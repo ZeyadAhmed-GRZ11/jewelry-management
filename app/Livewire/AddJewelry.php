@@ -5,12 +5,23 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\store;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
+use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\Rule;
 
 
 class AddJewelry extends Component
 {
 
+    public $postId;
+    public $oldImage;
     use WithFileUploads;
+    use WithPagination;
+   #[Rule('image|max:2048')] // 2MB Max
+    public $image;
+  
+    #[Rule('required|min:3')]
+    public $title;
 
     public $is_flash_showing = false;
 
@@ -19,8 +30,16 @@ class AddJewelry extends Component
     public $description='';
     public $material_type='';
     public $price='';
-    public $image;
-
+  
+    public function store()
+    {
+    $this->validate();
+    Store::create([
+        'image' => $this->image->store('public/photos')
+    ]);
+    session()->flash('success', 'Image uploaded successfully.');
+    $this->reset('title','image');
+    }
     public function saveJewelry(){
         $this->validate([
             'jewelry_name'=> 'required',
@@ -44,26 +63,7 @@ class AddJewelry extends Component
 
             // return $this->redirect('/',navigate:true);
             $this->is_flash_showing = true;
-
-            if ($this->image != "") {
-                $rules['image'] = 'image';
-                // return redirect('/')->with('success',$url);
-            }
-
-            if ($this->image != "") {
-                // here we will store image
-                $image = $this->image;
-                $ext = $image->getClientOriginalExtension();
-                $imageName = time().'.'.$ext; // Unique image name
-    
-                // Save image to products directory
-                // $image->move(public_path('uploads/products'),$imageName);
-    
-                // Save image name in database
-                $new_store->image = $imageName;
-                $new_store->save();
-            }        
-
+           
         }catch(\Exception $e){
            dd($e);
         }

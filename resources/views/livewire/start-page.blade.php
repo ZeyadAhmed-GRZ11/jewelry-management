@@ -29,17 +29,16 @@
 
 				@foreach ($all_jewelries  as $item )
 						 <article>
-							<a href=""> @if ($item->image != "")
-                                         <img width="50" src="{{ asset('uploads/products/'.$item->image) }}" alt="">
-                                        @endif</a>
-							<h4><a href="">{{$item->jewelry_name}}</a></h4>
-							<!-- <h4><a href="">{{$item->material_type}}</a></h4> -->
-							<h4><a href="">{{$item->price}}</a></h4>
-                            </br>
+						    <h3>
+						      <img src="{{ Storage::url($item->image)}}" alt="Uploaded Image Preview" 
+							  style="width: 120px; hight: 100px; align-items:center; justify-content:center;">
+							</h3>
+							<h3><a href="">{{$item->jewelry_name}}</a></h3>
+							<h2><a href="">{{$item->price}}</a></h2>
 							<a href="" class="btn-add">Add to cart</a>
+							
 						 </article>
-				@endforeach
-
+						@endforeach
 				</section>
 			</div>
 			<section class="quick-links">
